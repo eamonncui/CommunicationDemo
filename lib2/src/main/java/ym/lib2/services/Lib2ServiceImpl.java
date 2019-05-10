@@ -23,7 +23,7 @@ public class Lib2ServiceImpl implements Lib2Service {
     Lib2DataManager lib2DataManager;
 
     public Lib2ServiceImpl(){
-        inject();
+
     }
 
     @Override

@@ -38,8 +38,14 @@ public class ServiceManager {
 
     public <T extends IService> T getService(@ServiceType int serviceType){
         ServiceHolder serviceHolder = serviceMap.get(serviceType);
+
+        if(serviceHolder == null){
+            return null;
+        }
+
         if(serviceHolder.instance == null){
             serviceHolder.instance = createServiceInstance(serviceHolder.clazz, serviceHolder.params);
+            serviceHolder.instance.inject();
         }
         return (T) serviceHolder.instance;
     }

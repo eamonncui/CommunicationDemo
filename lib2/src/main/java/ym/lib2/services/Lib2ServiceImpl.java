@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import io.reactivex.Notification;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import ym.communication.services.Lib2Service;
+import ym.communication.servicerouter.interfaces.Lib2Service;
 import ym.lib2.Lib2Application;
 import ym.lib2.model.Lib2DataManager;
 import ym.lib2.view.Lib2Activity;
@@ -26,9 +26,10 @@ public class Lib2ServiceImpl implements Lib2Service {
 
     }
 
+
     @Override
-    public void goToLib2Activity(Context context) {
-        context.startActivity(new Intent(context, Lib2Activity.class));
+    public Intent getLib2ActivityIntent(Context context) {
+        return new Intent(context, Lib2Activity.class);
     }
 
     @Override

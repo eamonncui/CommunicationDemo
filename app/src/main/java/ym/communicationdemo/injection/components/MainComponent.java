@@ -1,5 +1,7 @@
 package ym.communicationdemo.injection.components;
 
+import android.app.Application;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -14,5 +16,5 @@ import ym.communicationdemo.MainActivity;
 @Singleton
 @Component()
 public interface MainComponent {
-    void inject(MainActivity mainActivity);
+    void inject(Application application);
 }

@@ -2,7 +2,7 @@ package ym.lib1;
 
 import android.content.Context;
 
-import ym.communication.injection.modules.ServiceModule;
+import ym.communication.injection.modules.ServiceRouterModule;
 import ym.lib1.injection.components.DaggerLib1Component;
 import ym.lib1.injection.components.Lib1Component;
 
@@ -33,7 +33,7 @@ public class Lib1Application {
     public Lib1Component getLib1Component(){
         if(lib2Component == null){
             lib2Component = DaggerLib1Component.builder()
-                    .serviceModule(new ServiceModule())
+                    .serviceRouterModule(new ServiceRouterModule())
                     .build();
         }
         return lib2Component;

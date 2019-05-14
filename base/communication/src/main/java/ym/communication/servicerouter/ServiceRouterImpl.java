@@ -9,10 +9,19 @@ import io.reactivex.functions.Consumer;
 import ym.communication.servicerouter.BaseServiceRouter;
 import ym.communication.servicerouter.interfaces.AppService;
 import ym.communication.servicerouter.interfaces.Lib2Service;
+import ym.communication.servicerouter.interfaces.ServiceRouter;
 
 public class ServiceRouterImpl extends BaseServiceRouter {
 
-    public ServiceRouterImpl(){
+    private static class InstanceHolder {
+        private static final ServiceRouterImpl INSTANCE = new ServiceRouterImpl();
+    }
+
+    public static ServiceRouter getInstance(){
+        return InstanceHolder.INSTANCE;
+    }
+
+    private ServiceRouterImpl(){
 
     }
 

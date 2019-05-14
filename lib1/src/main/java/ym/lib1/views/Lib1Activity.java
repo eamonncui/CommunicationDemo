@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Notification;
 import io.reactivex.functions.Consumer;
+import ym.communication.servicerouter.ServiceRouterImpl;
 import ym.communication.servicerouter.interfaces.Lib2Service;
 import ym.communication.servicerouter.interfaces.ServiceRouter;
 import ym.lib1.Lib1Application;
@@ -20,38 +21,30 @@ public class Lib1Activity extends AppCompatActivity {
     private TextView goToLib2Activity;
     private TextView goToMainActivity;
 
-    @Inject
-    ServiceRouter serviceRouter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lib1);
         dataText = findViewById(R.id.data_text);
         goToLib2Activity = findViewById(R.id.go_to_lib2);
+        goToMainActivity = findViewById(R.id.go_to_main);
 
-        inject();
-
-        serviceRouter.subscribeData(new Consumer<Notification<String>>() {
+        ServiceRouterImpl.getInstance().subscribeData(new Consumer<Notification<String>>() {
             @Override
             public void accept(Notification<String> response) throws Exception {
                 dataText.setText(response.getValue());
             }
         });
-        serviceRouter.getSomeData();
+        ServiceRouterImpl.getInstance().getSomeData();
 
         goToLib2Activity.setOnClickListener(v -> {
-            startActivity(serviceRouter.getLib2ActivityIntent(this));
+            startActivity(ServiceRouterImpl.getInstance().getLib2ActivityIntent(this));
         });
 
         goToMainActivity.setOnClickListener(v -> {
-            Intent intent = serviceRouter.getMainActivityIntent(this);
+            Intent intent = ServiceRouterImpl.getInstance().getMainActivityIntent(this);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
-    }
-
-    private void inject(){
-        Lib1Application.getInstance().getLib1Component().inject(this);
     }
 }

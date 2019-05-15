@@ -26,6 +26,12 @@ public class Lib1DataManger {
 
     @Inject
     public Lib1DataManger() {
+        RxBus.getDefault().subscribe(this, Lib2Service.Lib2ServiceTag.getSomeData.name(), new RxBus.Callback<String>() {
+            @Override
+            public void onEvent(String s) {
+                publish(mDataSubject, Observable.just(s));
+            }
+        });
     }
 
     private PublishSubject<Notification<String>> mDataSubject = PublishSubject.create();
@@ -54,12 +60,6 @@ public class Lib1DataManger {
     }
 
     public void requestLib2Data() {
-        RxBus.getDefault().subscribe(this, Lib2Service.Lib2ServiceTag.getSomeData.name(), new RxBus.Callback<String>() {
-            @Override
-            public void onEvent(String s) {
-                publish(mDataSubject, Observable.just(s));
-            }
-        });
         mLib2Service.getSomeData();
     }
 }

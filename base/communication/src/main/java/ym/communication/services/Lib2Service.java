@@ -12,7 +12,7 @@ import io.reactivex.functions.Consumer;
 * @Date 2019/5/6
 **/
 public interface Lib2Service extends IService{
-    public enum Lib2ServiceTag{
+    enum Lib2ServiceTag{
         getSomeData
     }
 

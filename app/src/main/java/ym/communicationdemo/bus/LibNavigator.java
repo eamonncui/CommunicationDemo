@@ -23,8 +23,8 @@ import ym.lib1.router.Lib1Action;
 @Singleton
 public class LibNavigator {
 
-    private String LIB1_TAG_LOGIC1 = "LIB1_TAG_LOGIC1";
-    private String LIB1_TAG_LOGIC2 = "LIB1_TAG_LOGIC2";
+    private static String LIB1_TAG_LOGIC1 = "LIB1_TAG_LOGIC1";
+    private static String LIB1_TAG_LOGIC2 = "LIB1_TAG_LOGIC2";
 
     private WeakReference<Context> mContext;
 

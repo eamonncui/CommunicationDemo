@@ -2,6 +2,8 @@ package ym.lib2.model;
 
 import android.util.Log;
 
+import com.blankj.rxbus.RxBus;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -13,6 +15,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
+import ym.communication.services.Lib2Service;
 
 /**
 *
@@ -34,7 +37,8 @@ public class Lib2DataManager {
     }
 
     public void getSomeData(){
-        publish(mDataSubject, Observable.just("Data from lib2"));
+        RxBus.getDefault().post("Data from lib2", Lib2Service.Lib2ServiceTag.getSomeData.name());
+//        publish(mDataSubject, Observable.just("Data from lib2"));
     }
 
     private  <T> Disposable subscribe(PublishSubject<T> ps, Consumer<T> c) {

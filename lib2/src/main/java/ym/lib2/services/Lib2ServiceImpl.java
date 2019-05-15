@@ -11,7 +11,6 @@ import io.reactivex.functions.Consumer;
 import ym.communication.services.Lib2Service;
 import ym.lib2.Lib2Application;
 import ym.lib2.model.Lib2DataManager;
-import ym.lib2.view.Lib2Activity;
 
 /**
 *
@@ -24,11 +23,6 @@ public class Lib2ServiceImpl implements Lib2Service {
 
     public Lib2ServiceImpl(){
 
-    }
-
-    @Override
-    public void goToLib2Activity(Context context) {
-        context.startActivity(new Intent(context, Lib2Activity.class));
     }
 
     @Override

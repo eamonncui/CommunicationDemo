@@ -7,18 +7,16 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import io.reactivex.Notification;
-import io.reactivex.functions.Consumer;
-import ym.communication.services.Lib2Service;
 import ym.lib1.Lib1Application;
 import ym.lib1.R;
+import ym.lib1.model.Lib1DataManger;
 
 public class Lib1Activity extends AppCompatActivity {
     private TextView dataText;
     private TextView goToLib2Activity;
 
     @Inject
-    Lib2Service lib2Service;
+    Lib1DataManger lib1DataManger;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,16 +27,13 @@ public class Lib1Activity extends AppCompatActivity {
 
         inject();
 
-        lib2Service.subscribeData(new Consumer<Notification<String>>() {
-            @Override
-            public void accept(Notification<String> response) throws Exception {
-                dataText.setText(response.getValue());
-            }
-        });
-        lib2Service.getSomeData();
+        lib1DataManger.subscribeData(response -> dataText.setText(response.getValue()));
+
+        lib1DataManger.requestLib2Data();
 
         goToLib2Activity.setOnClickListener(v -> {
-            lib2Service.goToLib2Activity(this);
+            //lib2会有自己启动入口，类似lib1中的，这里只是临时吧router get出来
+            Lib1Application.getInstance().getmLib1Navigator().getAction().startNavigationAct(this);
         });
     }
 

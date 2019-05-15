@@ -2,6 +2,7 @@ package ym.communicationdemo;
 
 import android.app.Application;
 
+import ym.communicationdemo.bus.Lib1RouterImpl;
 import ym.communicationdemo.injection.components.DaggerMainComponent;
 import ym.communicationdemo.injection.components.MainComponent;
 import ym.lib1.Lib1Application;

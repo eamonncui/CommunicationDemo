@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CommunicationDemo.iml" filepath="$PROJECT_DIR$/.idea/CommunicationDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/communication/communication.iml" filepath="$PROJECT_DIR$/base/communication/communication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib1/lib1.iml" filepath="$PROJECT_DIR$/lib1/lib1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib2/lib2.iml" filepath="$PROJECT_DIR$/lib2/lib2.iml" />
+    </modules>
+  </component>
+</project>

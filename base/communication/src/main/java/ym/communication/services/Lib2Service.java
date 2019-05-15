@@ -12,7 +12,10 @@ import io.reactivex.functions.Consumer;
 * @Date 2019/5/6
 **/
 public interface Lib2Service extends IService{
-    void goToLib2Activity(Context context);
+    public enum Lib2ServiceTag{
+        getSomeData
+    }
+
     Disposable subscribeData(Consumer<Notification<String>> consumer);
     void getSomeData();
 }
